@@ -22,3 +22,4 @@ for coin in coins:
   remain %= coin
 
 print(whole_coin_count)
+
