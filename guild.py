@@ -17,3 +17,53 @@
 # 출력 예
 # 2
 
+#질문0 : 한번에 주석처리하는 법? 단축키 알아보기 
+
+number= int(input("How many memebers are in your guild?"))
+terror_list =list(map(int, input("How much terror level does each member have?").split()))
+
+#similar but little different style of inputs(엔터로 구분)
+#N=number
+#terror_list_b=[]
+#for i in range(N): 
+#    terror_list_b.append(int(input("Please enter Terror level of each memebr, one by one")))
+
+terror_list_set = set(terror_list)
+unique_terror_list = list(terror_list_set)
+
+#def compare(x):
+#    if input() >= x :
+#        return(1)
+
+
+#질문1. def 쓸 때 그 내부에서 활용되는 변수는 다른 곳에서 쓰인 변수명 써도 되는가?
+def countif(some_list, cond= None):
+    if cond:
+        count = sum(cond(element) for element in some_list)
+    else:
+        count = len(some_list)
+    return count
+
+
+possible_combination = 0
+for i in unique_terror_list:
+    count = countif(terror_list, lambda x: x>= i)
+    if count >= i:
+        possible_combination += 1
+
+print(possible_combination)
+
+
+#질문2. 왜 아래처럼 했을 때는 바로 안될까요? 
+#for i in unique_terror_list:
+#    count = sum(map(lambda x : x >= i, terror_list_set))
+
+ 
+
+#연습장
+#질문3: number를 받아서 그 number 만큼의 element를 가진 list를 만들어서 거기에 input을 받아서 숫자를 덮어씌울 수 있난가?
+#terror_list= [1:number]
+#list_a = []
+#a = input("By the way, what is your favorite number?")
+#list_a.append(a)
+#print(list_a)
